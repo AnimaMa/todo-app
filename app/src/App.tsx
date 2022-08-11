@@ -1,12 +1,6 @@
 import React from "react";
-import { Todo } from "./components/Todo/Todo";
-
 function App() {
-  return (
-    <div className="App">
-      <Todo />
-    </div>
-  );
+  return <div id="root"></div>;
 }
 
 export default App;
