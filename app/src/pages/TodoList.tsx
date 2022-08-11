@@ -5,7 +5,6 @@ import { TodoList } from "../components/TodoList/TodoList";
 function TodoListPage() {
   return (
     <Layout>
-      <h2>todolist page</h2>
       <TodoList />
     </Layout>
   );
