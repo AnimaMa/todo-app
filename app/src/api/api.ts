@@ -1,1 +1,1 @@
-export const apiUrl = "todo.kontentinoservices.dev";
+export const apiUrl = "https://todo.kontentinoservices.dev";

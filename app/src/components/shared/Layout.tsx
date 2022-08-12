@@ -15,7 +15,7 @@ export const Layout = (props: LayoutProps) => {
           <Link to="/">Home</Link>
         </span>
         <span>
-          <Link to="/todolist">TodoList</Link>
+          <Link to="/todos">TodoList</Link>
         </span>
       </header>
       <main>
