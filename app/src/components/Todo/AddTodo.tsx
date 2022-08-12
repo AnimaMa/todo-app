@@ -4,6 +4,7 @@ import Button from "../../ui/lib/atoms/Button/Button";
 import { InputWithLabel } from "../../ui/lib/molecules/InputWithLabel/InputWithLabel";
 import { TodoProps } from "./Todo";
 import { nanoid } from "nanoid";
+import axios from "axios";
 
 export interface AddTodoProps {}
 
@@ -29,29 +30,34 @@ export const AddTodo = (props: AddTodoProps) => {
     setLoading(true);
     console.log(todo);
 
-    fetch(`${apiUrl}/todos`, {
-      method: "POST",
-      body: parsed,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => console.log(response))
-      .then(() => setLoading(false))
-      .catch((err) => {
-        setError(true);
-        console.log(err.message);
-      });
+    if (todo) {
+      axios({
+        method: "post",
+        url: `${apiUrl}/todos`,
+        data: todo,
+      })
+        .then((response) => console.log(response))
+        .then(() => setLoading(false))
+        .catch((err) => {
+          setError(true);
+          console.log(err.message);
+        });
 
-    todoInput.current.value = "";
+      todoInput.current.value = "";
+      setTask("");
+    }
   };
 
   return (
     <section className="section--todo-add flex justify-center">
       {loading && <p>LOADING</p>}
       {error && <p className="text-red-600">something went wrong</p>}
-      <form method="" onSubmit={(e) => handleClick(e)}>
+      <form
+        method=""
+        onSubmit={(e) => {
+          if (task) handleClick(e);
+        }}
+      >
         <div className="flex items-end content-center gap-4">
           <InputWithLabel
             input={{
@@ -66,7 +72,12 @@ export const AddTodo = (props: AddTodoProps) => {
               label: "Todo add",
             }}
           />
-          <Button type="submit" title={"Add todo"} variant={"primary"} />
+          <Button
+            type="submit"
+            title={"Add todo"}
+            variant={"primary"}
+            className={`${task === "" ? "cursor-not-allowed opacity-50 " : ""}`}
+          />
         </div>
       </form>
     </section>

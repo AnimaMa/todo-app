@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { apiUrl } from "../../api/api";
 import { Todo, TodoProps } from "../Todo/Todo";
 import { AddTodo } from "../Todo/AddTodo";
+import axios from "axios";
 
 export interface TodoListProps {}
 
@@ -10,14 +11,15 @@ export const TodoList = (props: TodoListProps) => {
   const [todos, setTodos] = useState<TodoProps[]>();
 
   useEffect(() => {
-    fetch(`${apiUrl}/todos`, {
-      method: "GET",
+    axios({
+      method: "get",
+      url: `${apiUrl}/todos`,
     })
-      .then((response) => response.json())
-      .then((json) => setTodos(json.data));
+      .then((response) => setTodos(response.data.data))
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
-
-  console.log(todos);
 
   return (
     <>

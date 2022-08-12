@@ -16,6 +16,8 @@ export const Tag = (props: TagProps) => {
       return SUCCESS_TAG;
     } else if (variant === "waiting") {
       return WAITING_TAG;
+    } else {
+      return "";
     }
   };
   return (
