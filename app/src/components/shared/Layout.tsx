@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Container } from "./Container/Container";
 
 export interface LayoutProps {
@@ -8,14 +8,25 @@ export interface LayoutProps {
 
 export const Layout = (props: LayoutProps) => {
   const { children } = props;
+  const activeClass = "text-cyan-700 font-semibold";
   return (
     <>
       <header className="w-full py-6 px-3 flex  gap-6 text-cyan-600">
         <span>
-          <Link to="/">Home</Link>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? activeClass : undefined)}
+          >
+            Home
+          </NavLink>
         </span>
         <span>
-          <Link to="/todos">TodoList</Link>
+          <NavLink
+            to="/todos"
+            className={({ isActive }) => (isActive ? activeClass : undefined)}
+          >
+            TodoList
+          </NavLink>
         </span>
       </header>
       <main>
