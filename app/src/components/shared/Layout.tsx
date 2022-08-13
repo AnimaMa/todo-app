@@ -22,6 +22,14 @@ export const Layout = (props: LayoutProps) => {
         </span>
         <span>
           <NavLink
+            to="/add-todo"
+            className={({ isActive }) => (isActive ? activeClass : undefined)}
+          >
+            Add Todo
+          </NavLink>
+        </span>
+        <span>
+          <NavLink
             to="/todos"
             className={({ isActive }) => (isActive ? activeClass : undefined)}
           >
@@ -29,7 +37,7 @@ export const Layout = (props: LayoutProps) => {
           </NavLink>
         </span>
       </header>
-      <main>
+      <main className="min-h-[100vh]">
         <Container>{children}</Container>
       </main>
 

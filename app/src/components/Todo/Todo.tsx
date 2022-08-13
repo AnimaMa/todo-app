@@ -1,30 +1,30 @@
 import axios from "axios";
 import React from "react";
-import { apiUrl } from "../../api/api";
 import Button from "../../ui/lib/atoms/Button/Button";
 import { Tag } from "../../ui/lib/atoms/Tag/Tag";
 
-export interface Todo {
+export interface ITodo {
   _id: string;
   text: string;
   isDone: boolean;
 }
 
-export interface TodoProps extends Todo {}
+export interface TodoProps extends ITodo {}
 
-const deleteTodo = async (id: string) => {
-  console.log(id);
-  try {
-    await axios
-      .delete(`${apiUrl}/data/${id}`)
-      .then((json) => console.log(json.data))
-      .then((response) => console.log(response));
-  } catch (error) {
-    // .catch((err) => {
-    console.log(error);
-    // });
-  }
-};
+// const deleteTodo = async (id: string) => {
+//   console.log(id);
+//   try {
+//     await axios
+//       .delete(`/todos/${id}`)
+//       .then((json) => console.log(json.data))
+//       .then((response) => console.log(response));
+//   } catch (error) {
+//     // .catch((err) => {
+//     console.log(error);
+//     // });
+//   }
+// };
+
 const da = {
   isDone: true,
 };
@@ -32,7 +32,7 @@ const da = {
 const editTodo = async (id: string) => {
   try {
     await axios
-      .patch(`${apiUrl}/data/${id}`, {
+      .patch(`/todos/${id}`, {
         isDone: true,
         _id: id,
       })
@@ -60,12 +60,12 @@ export const Todo = (props: TodoProps) => {
           title={"Edit"}
           className="!p-2 text-xs"
         />
-        <Button
+        {/* <Button
           variant="secondary"
           onClick={() => deleteTodo(_id)}
           title={"Delete"}
           className="!p-2 text-xs"
-        />
+        /> */}
       </div>
     </>
   );

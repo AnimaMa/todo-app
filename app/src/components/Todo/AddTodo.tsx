@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { apiUrl } from "../../api/api";
 import Button from "../../ui/lib/atoms/Button/Button";
 import { InputWithLabel } from "../../ui/lib/molecules/InputWithLabel/InputWithLabel";
 import { TodoProps } from "./Todo";
 import { nanoid } from "nanoid";
 import axios from "axios";
+import { createTodo } from "../../ui/api/jsonserver";
 
 export interface AddTodoProps {}
 
@@ -33,21 +33,11 @@ export const AddTodo = (props: AddTodoProps) => {
     console.log(todo);
 
     if (todo) {
-      axios({
-        method: "post",
-        url: `${apiUrl}/data`,
-        data: todo,
-      })
-        .then((response) => console.log(response))
-        .then(() => setLoading(false))
-        .catch((err) => {
-          setError(true);
-          console.log(err.message);
-        });
-
+      createTodo(todo);
       todoInput.current.value = "";
       setTask("");
       console.log(todo);
+      setLoading(false);
     }
   };
 
