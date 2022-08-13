@@ -11,7 +11,9 @@ export interface AddTodoProps {}
 export const AddTodo = (props: AddTodoProps) => {
   const {} = props;
   const [task, setTask] = useState<string>("");
-  const [todo, setTodo] = useState<Omit<TodoProps, "_id">>();
+  // const [todo, setTodo] = useState<Omit<TodoProps, "_id">>();
+  const [todo, setTodo] = useState<TodoProps>();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
@@ -20,7 +22,7 @@ export const AddTodo = (props: AddTodoProps) => {
   useEffect(() => {
     if (task) {
       const createId = nanoid(8);
-      setTodo({ text: task, isDone: false });
+      setTodo({ _id: createId, text: task, isDone: false });
     }
   }, [task]);
 
@@ -33,7 +35,7 @@ export const AddTodo = (props: AddTodoProps) => {
     if (todo) {
       axios({
         method: "post",
-        url: `${apiUrl}/todos`,
+        url: `${apiUrl}/data`,
         data: todo,
       })
         .then((response) => console.log(response))

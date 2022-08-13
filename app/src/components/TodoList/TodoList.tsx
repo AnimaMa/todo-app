@@ -13,9 +13,12 @@ export const TodoList = (props: TodoListProps) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `${apiUrl}/todos`,
+      url: `${apiUrl}/data`,
     })
-      .then((response) => setTodos(response.data.data))
+      // .then((response) => setTodos(response.data.data))
+      // .then((request) => request.data[4])
+      .then((response) => setTodos(response.data))
+
       .catch(function (error) {
         console.log(error);
       });

@@ -4,17 +4,19 @@ import { apiUrl } from "../../api/api";
 import Button from "../../ui/lib/atoms/Button/Button";
 import { Tag } from "../../ui/lib/atoms/Tag/Tag";
 
-export interface TodoProps {
+export interface Todo {
   _id: string;
   text: string;
   isDone: boolean;
 }
 
+export interface TodoProps extends Todo {}
+
 const deleteTodo = async (id: string) => {
   console.log(id);
   try {
     await axios
-      .delete(`${apiUrl}/todos/${id}`)
+      .delete(`${apiUrl}/data/${id}`)
       .then((json) => console.log(json.data))
       .then((response) => console.log(response));
   } catch (error) {
@@ -27,21 +29,18 @@ const da = {
   isDone: true,
 };
 
-const editTodo = (id: string) => {
-  const m = decodeURIComponent(id);
-  console.log("id", id);
-
-  console.log("m", m);
-  axios
-    .patch(`${apiUrl}/todo/${id}`, {
-      method: "PATCH",
-      body: da,
-    })
-    .then((json) => console.log(json))
-    .then((response) => console.log(response))
-    .catch((err) => {
-      console.log(err.message);
-    });
+const editTodo = async (id: string) => {
+  try {
+    await axios
+      .patch(`${apiUrl}/data/${id}`, {
+        isDone: true,
+        _id: id,
+      })
+      .then((json) => console.log(json))
+      .then((response) => console.log(response));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const Todo = (props: TodoProps) => {
