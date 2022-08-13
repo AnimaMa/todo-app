@@ -13,7 +13,7 @@ export const TodoList = (props: TodoListProps) => {
 
   useEffect(() => {
     getData();
-  });
+  }, []);
 
   const getData = async () => {
     try {
