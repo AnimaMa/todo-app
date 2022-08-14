@@ -27,13 +27,13 @@ export const TodoList = (props: TodoListProps) => {
   return (
     <>
       <div>{/* <AddTodo /> */}</div>
-      <ul className="max-w-lg mx-auto mt-12 flex justify-center gap-y-4 flex-col">
+      <ul className="max-w-3xl mx-auto mt-12 flex justify-center gap-y-4 flex-col">
         {todos?.map((todo: TodoProps, index: number) => (
           <li
             key={index}
             className="w-full flex justify-between transition-all duration-500"
           >
-            <Todo text={todo.text} isDone={todo.isDone} _id={todo._id} />
+            <Todo text={todo.text} isDone={todo.isDone} id={todo.id} />
           </li>
         ))}
 

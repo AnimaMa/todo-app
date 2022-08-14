@@ -11,7 +11,7 @@ export interface AddTodoProps {}
 export const AddTodo = (props: AddTodoProps) => {
   const {} = props;
   const [task, setTask] = useState<string>("");
-  // const [todo, setTodo] = useState<Omit<TodoProps, "_id">>();
+  // const [todo, setTodo] = useState<Omit<TodoProps, "id">>();
   const [todo, setTodo] = useState<TodoProps>();
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,7 +22,7 @@ export const AddTodo = (props: AddTodoProps) => {
   useEffect(() => {
     if (task) {
       const createId = nanoid(8);
-      setTodo({ _id: createId, text: task, isDone: false });
+      setTodo({ id: createId, text: task, isDone: false });
     }
   }, [task]);
 
