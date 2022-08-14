@@ -17,6 +17,22 @@ export const getTodoList = async () => {
   return data;
 };
 
+export const getDoneTodos = async () => {
+  const data = await jsonServerApi({
+    method: "GET",
+    url: "/todos?isDone=true",
+  });
+  return data.data;
+};
+
+export const getNotDoneTodos = async () => {
+  const data = await jsonServerApi({
+    method: "GET",
+    url: "/todos?isDone=false",
+  });
+  return data.data;
+};
+
 export const getTodo = async (id: string) => {
   const todo = await jsonServerApi({
     url: `/todos?_id=${id}`,
