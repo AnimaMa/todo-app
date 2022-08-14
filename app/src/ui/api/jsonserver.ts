@@ -21,7 +21,9 @@ export const createTodo = async (todo: ITodo) => {
     method: "POST",
     url: "/todos",
     data: todo,
-  }).then((request) => console.log(request.headers));
+  })
+    .then((request) => console.log(request.headers))
+    .catch((error) => console.log(error));
 
   // return data;
 };

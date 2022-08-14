@@ -38,11 +38,13 @@ export const AddTodo = (props: AddTodoProps) => {
       setTask("");
       console.log(todo);
       setLoading(false);
+    } else {
+      setError(true);
     }
   };
 
   return (
-    <section className="section--todo-add flex justify-center">
+    <section className="section--todo-add flex justify-center items-center">
       {loading && <p>LOADING</p>}
       {error && <p className="text-red-600">something went wrong</p>}
       <form

@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { FcTodoList } from "react-icons/fc";
-import { IoCreateOutline } from "react-icons/io5";
+import { MdAddTask } from "react-icons/md";
 
 export interface INavigationRoute {
   label: string;
@@ -23,6 +23,6 @@ export const navigationRoutes: INavigationRoute[] = [
   {
     label: "Add todo",
     href: "/add-todo",
-    icon: <IoCreateOutline />,
+    icon: <MdAddTask />,
   },
 ];

@@ -5,7 +5,7 @@ import { AddTodo } from "../components/Todo/AddTodo";
 function AddTodoPage() {
   return (
     <Layout>
-      <AddTodo />{" "}
+      <AddTodo />
     </Layout>
   );
 }

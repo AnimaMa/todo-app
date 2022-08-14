@@ -1,7 +1,10 @@
 import axios from "axios";
 import React from "react";
+import { MdOutlineEditNote } from "react-icons/md";
 import Button from "../../ui/lib/atoms/Button/Button";
+import { Input } from "../../ui/lib/atoms/Input/Input";
 import { Tag } from "../../ui/lib/atoms/Tag/Tag";
+import { InputWithLabel } from "../../ui/lib/molecules/InputWithLabel/InputWithLabel";
 
 export interface ITodo {
   _id: string;
@@ -47,19 +50,37 @@ export const Todo = (props: TodoProps) => {
   const { _id, text, isDone } = props;
   return (
     <>
-      <p className="text-slate-600 capitalize">{text}</p>
-      {_id}
+      <div className="flex items-center mr-4">
+        <InputWithLabel
+          input={{
+            className:
+              "w-4 h-4 !accent-violet-500 !focus:ring-red-500 !outline-none ",
+            type: "checkbox",
+            id: "checkInput",
+            name: "checkInput",
+          }}
+          label={{
+            forName: "checkInput",
+            label: text,
+            className: "capitalize",
+          }}
+          formControlClassName="!flex-row !flex-row-reverse gap-6 items-center"
+        />
+      </div>
+
       <div>
         <Tag
           variant={isDone ? "success" : "waiting"}
           label={isDone ? "done" : "waiting"}
         />
         <Button
-          variant="primary"
+          variant="text"
           onClick={() => editTodo(_id)}
-          title={"Edit"}
-          className="!p-2 text-xs"
-        />
+          title={""}
+          className="text-md"
+        >
+          <MdOutlineEditNote className="text-md text-slate-700  " />
+        </Button>
         {/* <Button
           variant="secondary"
           onClick={() => deleteTodo(_id)}
