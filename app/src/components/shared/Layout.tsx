@@ -10,16 +10,12 @@ export const Layout = (props: LayoutProps) => {
   const { children } = props;
   return (
     <>
-      <div className="flex ">
+      <div className="flex overflow-hidden ">
         <Header />
-        <main className="w-[80%] min-h-[100vh] py-10">
+        <main className="w-[80%] h-screen py-10">
           <Container>{children}</Container>
         </main>
       </div>
-
-      <footer>
-        <Container>footer</Container>
-      </footer>
     </>
   );
 };

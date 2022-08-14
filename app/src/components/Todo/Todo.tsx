@@ -47,8 +47,9 @@ export const Todo = (props: TodoProps) => {
       <div className="flex items-center mr-4">
         <InputWithLabel
           input={{
-            className:
-              "w-4 h-4 !accent-violet-500 !focus:ring-red-500 !outline-none ",
+            className: `w-4 h-4 !accent-violet-500 !focus:ring-red-500 !outline-none ${
+              isDone ? "shadow-lg shadow-indigo-500/50" : ""
+            }`,
             type: "checkbox",
             id: "checkInput",
             name: "checkInput",
@@ -60,7 +61,9 @@ export const Todo = (props: TodoProps) => {
           label={{
             forName: "checkInput",
             label: text,
-            className: "capitalize",
+            className: `capitalize ${
+              isDone ? "line-through text-opacity-70" : ""
+            }`,
           }}
           formControlClassName="!flex-row !flex-row-reverse gap-6 items-center"
         />

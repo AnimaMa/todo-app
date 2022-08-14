@@ -53,7 +53,7 @@
     {
       "id": "62f5ecfcd80f9b7c18353f82",
       "text": "MAcka",
-      "isDone": false,
+      "isDone": true,
       "__v": 0
     },
     {
@@ -83,7 +83,7 @@
     {
       "id": "62f5fefad80f9b7c18353fff",
       "text": "this is done task",
-      "isDone": false,
+      "isDone": true,
       "__v": 0
     },
     {

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Todo, TodoProps } from "../Todo/Todo";
-import { AddTodo } from "../Todo/AddTodo";
 import axios from "axios";
 import { getTodoList } from "../../ui/api/jsonserver";
-// import { getTodoList } from "../../ui/api/jsonserver";
 
 export interface TodoListProps {}
 
@@ -25,22 +23,26 @@ export const TodoList = (props: TodoListProps) => {
   };
 
   return (
-    <>
-      <div>{/* <AddTodo /> */}</div>
-      <ul className="max-w-3xl mx-auto mt-12 flex justify-center gap-y-4 flex-col">
-        {todos?.map((todo: TodoProps, index: number) => (
-          <li
-            key={index}
-            className="w-full flex justify-between transition-all duration-500"
-          >
-            <Todo text={todo.text} isDone={todo.isDone} id={todo.id} />
-          </li>
-        ))}
+    <section className="py-4 ">
+      <div className="max-w-4xl mx-auto max-h-[85vh] overflow-y-scroll overscroll-contain">
+        <ul className=" flex justify-center px-4 gap-y-4 flex-col   ">
+          {todos?.map((todo: TodoProps, index: number) => (
+            <li
+              key={index}
+              className="w-full flex justify-between transition-all duration-500"
+            >
+              <Todo text={todo.text} isDone={todo.isDone} id={todo.id} />
+            </li>
+          ))}
 
-        {!todos?.length && (
-          <p className="text-orange-600 text-lg text-center"> No data found</p>
-        )}
-      </ul>
-    </>
+          {!todos?.length && (
+            <p className="text-orange-600 text-lg text-center">
+              {" "}
+              No data found
+            </p>
+          )}
+        </ul>
+      </div>
+    </section>
   );
 };
