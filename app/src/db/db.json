@@ -16,15 +16,13 @@
       "id": "62f55c4dd80f9b7c18353f69",
       "text": "MAcka",
       "isDone": true,
-      "__v": 0,
-      "{\"isDone\":true,\"_id\":\"62f55c4dd80f9b7c18353f69\"}": ""
+      "__v": 0
     },
     {
       "id": "62f55ca2d80f9b7c18353f6c",
       "text": "swim",
       "isDone": true,
-      "__v": 0,
-      "{\"isDone\":true,\"_id\":\"62f55ca2d80f9b7c18353f6c\"}": ""
+      "__v": 0
     },
     {
       "id": "62f564a3d80f9b7c18353f72",
@@ -56,111 +54,10 @@
       "isDone": true,
       "__v": 0
     },
-    {
-      "id": "62f5f63ad80f9b7c18353f87",
-      "text": "test c",
-      "isDone": false,
-      "__v": 0
-    },
+
     {
       "id": "62f5f6d9d80f9b7c18353f8a",
       "text": "Organize your to-do list by workflow,",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f5f89ad80f9b7c18353f8d",
-      "text": "create an app",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f5fc0ad80f9b7c18353fd2",
-      "text": "MAcka",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f5fefad80f9b7c18353fff",
-      "text": "this is done task",
-      "isDone": true,
-      "__v": 0
-    },
-    {
-      "id": "62f5ff0fd80f9b7c18354005",
-      "text": "task2",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f61eebd80f9b7c18354084",
-      "text": "dance ",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f62fa2d80f9b7c183540de",
-      "text": "testing app",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f63001d80f9b7c183540e4",
-      "text": "Take a Road Trip.",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f63974d80f9b7c183540ff",
-      "text": "2022 BEST IDEAS FOR YOUR SUMMER BUCKET LIST",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f63e28d80f9b7c18354106",
-      "text": "BARBECUE SOME NEW RECIPES Learn to barbecue something new. Step away from your usual",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f63edfd80f9b7c1835410b",
-      "text": "test id ",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f64b92d80f9b7c18354136",
-      "text": "DETOX FROM TECHNOLOGY",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f6839ed80f9b7c1835416f",
-      "text": "Peter lauro",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f684acd80f9b7c1835417a",
-      "text": "bazinga",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f68e73d80f9b7c18354184",
-      "text": "testing",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f76ff0d80f9b7c183541b0",
-      "text": "test with id",
-      "isDone": true,
-      "__v": 0
-    },
-    {
-      "id": "62f7704dd80f9b7c183541bd",
-      "text": "MAcka",
       "isDone": false,
       "__v": 0
     }

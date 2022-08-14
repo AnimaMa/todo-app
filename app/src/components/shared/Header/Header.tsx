@@ -26,7 +26,7 @@ export const Header = (props: HeaderProps) => {
           {navroute.href === "/add-todo" && (
             <NavLink
               to={navroute.href}
-              className="absolute bottom-72 p-5 flex items-center justify-center shadow-lg shadow-indigo-500/50 bg-violet-500 rounded-lg rounded-tl-none"
+              className="absolute bottom-16 p-5 flex items-center justify-center shadow-lg shadow-indigo-500/50 bg-violet-500 rounded-lg rounded-tl-none"
             >
               <AiOutlinePlus className="text-white text-2xl" />
             </NavLink>

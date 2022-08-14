@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.donutchart-custom-class{
+    max-width: 400px;
+}
+
+.donutchart-custom-class-innertext-label ,
+.donutchart-custom-class-innertext-value{
+    font-size: 32px;
+    fill: #6b21a8; 
+    font-weight: 600;
+}

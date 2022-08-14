@@ -44,10 +44,10 @@ export const Todo = (props: TodoProps) => {
 
   return (
     <>
-      <div className="flex items-center mr-4">
+      <div className="flex items-center ">
         <InputWithLabel
           input={{
-            className: `w-4 h-4 !accent-violet-500 !focus:ring-red-500 !outline-none ${
+            className: `!w-4 h-4 !accent-violet-500 !focus:ring-red-500 !outline-none ${
               isDone ? "shadow-lg shadow-indigo-500/50" : ""
             }`,
             type: "checkbox",
@@ -65,7 +65,7 @@ export const Todo = (props: TodoProps) => {
               isDone ? "line-through text-opacity-70" : ""
             }`,
           }}
-          formControlClassName="!flex-row !flex-row-reverse gap-6 items-center"
+          formControlClassName="!flex-row !flex-row-reverse gap-x-3 gap-y-6 items-center"
         />
       </div>
 
