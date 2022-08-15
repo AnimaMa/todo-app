@@ -2,12 +2,14 @@ import React from "react";
 import { Card } from "../../shared/Card/Card";
 import { DashboardTaskOverview } from "./DashboardTaskOverview";
 import { BsCheckAll, BsClockHistory, BsListTask } from "react-icons/bs";
-export interface DashboardCardProps {}
+export interface DashboardCardProps {
+  className?: string;
+}
 
 export const DashboardCard = (props: DashboardCardProps) => {
-  const {} = props;
+  const { className } = props;
   return (
-    <Card>
+    <Card className={`${className}`}>
       <h2 className="font-semibold">Task Overview</h2>
       <div className="my-12 grid grid-cols-3 gap-x-24">
         <DashboardTaskOverview

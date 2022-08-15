@@ -3,32 +3,42 @@ import { ITodo } from "../../components/Todo/Todo";
 
 // https://todo.kontentinoservices.dev/
 // http://localhost:4200
-const jsonServerApi = axios.create({
-  baseURL: "http://localhost:4200",
+//delete: https://todo.kontentinoservices.dev/todo/62f63e28d80f9b7c18354106 acceppt ***
+
+// GET - /todos
+// POST - /todos
+// POST - /todo/:id/toggle
+// DELETE - /todo/:id
+
+export const jsonServerApi = axios.create({
+  baseURL: "https://todo.kontentinoservices.dev",
 });
 
 export const getTodoList = async () => {
-  const { data } = await jsonServerApi({
+  const data = await jsonServerApi({
     method: "GET",
     url: "/todos",
   });
-  console.log(data);
-
-  return data;
+  return data.data.data;
 };
 
 export const getDoneTodos = async () => {
   const data = await jsonServerApi({
     method: "GET",
-    url: "/todos?isDone=true",
+    url: "/todos",
+    params: {
+      filter: '[["isDone", "=", true]]',
+    },
   });
+  console.log("DATA", data.data.data);
   return data.data;
 };
 
 export const getNotDoneTodos = async () => {
-  const data = await jsonServerApi({
+  const { data } = await jsonServerApi({
     method: "GET",
-    url: "/todos?isDone=false",
+    url: "/todos",
+    params: "isDone=false",
   });
   return data.data;
 };
@@ -45,29 +55,35 @@ export const createTodo = async (todo: ITodo) => {
     method: "POST",
     url: "/todos",
     data: {
-      _id: 2,
       text: todo.text,
-      isDone: true,
-      id: 444,
     },
   })
     .then((request) => console.log(request.headers))
     .catch((error) => console.log(error));
-
-  // return data;
 };
-export const updateTodoState = async (id: string, isDone: boolean) => {
-  console.log(id);
+
+export const updateTodoState = async (_id: string, isDone: boolean) => {
+  console.log(_id);
   await jsonServerApi({
-    method: "patch",
-    url: `/todos/${id}`,
+    method: "POST",
+    url: `/todo/${_id}/toggle`,
     data: {
       isDone: !isDone,
     },
-    params: id,
   }).catch((error) => console.log(error));
 };
 
+export const deleteTodo = async (_id: string) => {
+  const { data } = await jsonServerApi({
+    method: "DELETE",
+    url: `/todo/${_id}`,
+    headers: {
+      Accept: "***",
+    },
+  });
+
+  return data;
+};
 // export const updateTodo = async (id: string) => {
 //   await jsonServerApi({
 //     method: "PATCH",
@@ -92,13 +108,3 @@ export const updateTodoState = async (id: string, isDone: boolean) => {
 //     .then((response) => console.log(response))
 //     .catch((error) => console.log(error));
 // };
-
-// // export const deleteTodo = async (id: num) => {
-// //   const { data } = await jsonServerApi({
-// //     method: "POST",
-// //     url: "/todos",
-// //     data: todo,
-// //   });
-
-// //   return data;
-// // };

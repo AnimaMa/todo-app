@@ -1,5 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { INavigationRoute, navigationRoutes } from "../../../routes";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Modal } from "../Modal/Modal";

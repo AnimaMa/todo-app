@@ -1,11 +1,7 @@
 import React from "react";
-import { Card } from "../shared/Card/Card";
 import { DashboardCard } from "./components/DashboardCard";
 
-export interface DashboardSectionProps {}
-
-export const DashboardSection = (props: DashboardSectionProps) => {
-  const {} = props;
+export const DashboardSection = () => {
   return (
     <section className="px-20 pt-10">
       <header className="mb-10">

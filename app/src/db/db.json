@@ -1,51 +1,15 @@
 {
   "todos": [
     {
-      "id": "61ae7c4263b653e26100e6ac",
-      "text": "test",
-      "isDone": true,
-      "__v": 0
-    },
-    {
-      "id": "61ae7c4263b653e26100e6ac",
-      "text": "test",
-      "isDone": true,
-      "__v": 0
-    },
-    {
-      "id": "62f55c4dd80f9b7c18353f69",
-      "text": "MAcka",
-      "isDone": true,
-      "__v": 0
-    },
-    {
       "id": "62f55ca2d80f9b7c18353f6c",
       "text": "swim",
-      "isDone": false,
+      "isDone": true,
       "__v": 0
     },
     {
       "id": "62f564a3d80f9b7c18353f72",
       "text": "swim",
       "isDone": true,
-      "__v": 0
-    },
-    {
-      "id": "62f564b1d80f9b7c18353f74",
-      "text": "swim",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f564b1d80f9b7c18353f76",
-      "text": "swim",
-      "isDone": false,
-      "__v": 0
-    },
-    {
-      "id": "62f57169d80f9b7c18353f7d",
-      "text": "assadfas",
-      "isDone": false,
       "__v": 0
     },
     {
@@ -59,12 +23,6 @@
       "text": "Organize your to-do list by workflow,",
       "isDone": false,
       "__v": 0
-    },
-    {
-      "_id": 2,
-      "text": "MAcka",
-      "isDone": true,
-      "id": 444
     }
   ]
 }

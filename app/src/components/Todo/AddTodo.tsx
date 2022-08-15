@@ -3,15 +3,11 @@ import Button from "../../ui/lib/atoms/Button/Button";
 import { InputWithLabel } from "../../ui/lib/molecules/InputWithLabel/InputWithLabel";
 import { TodoProps } from "./Todo";
 import { nanoid } from "nanoid";
-import axios from "axios";
 import { createTodo } from "../../ui/api/jsonserver";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { MdOutlineError } from "react-icons/md";
 
-export interface AddTodoProps {}
-
-export const AddTodo = (props: AddTodoProps) => {
-  const {} = props;
+export const AddTodo = () => {
   const [task, setTask] = useState<string>("");
   const [todo, setTodo] = useState<TodoProps>();
   const [created, setCreated] = useState(false);
@@ -24,13 +20,12 @@ export const AddTodo = (props: AddTodoProps) => {
     if (task) {
       const createId = nanoid(8);
       setCreated(false);
-      setTodo({ id: createId, text: task, isDone: false });
+      setTodo({ _id: createId, text: task, isDone: false });
     }
   }, [task]);
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    const parsed = JSON.stringify(todo);
     setLoading(true);
     console.log(todo);
 
@@ -80,6 +75,7 @@ export const AddTodo = (props: AddTodoProps) => {
             title={"Add todo"}
             variant={"primary"}
             className={`${task === "" ? "cursor-not-allowed opacity-50 " : ""}`}
+            disabled={task === "" ? true : false}
           />
         </div>
       </form>

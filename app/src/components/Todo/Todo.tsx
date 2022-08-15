@@ -1,34 +1,19 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
-import { MdOutlineEditNote } from "react-icons/md";
-import { getTodo, updateTodoState } from "../../ui/api/jsonserver";
+import { deleteTodo, getTodo, updateTodoState } from "../../ui/api/jsonserver";
 import Button from "../../ui/lib/atoms/Button/Button";
-import { Input } from "../../ui/lib/atoms/Input/Input";
 import { Tag } from "../../ui/lib/atoms/Tag/Tag";
 import { InputWithLabel } from "../../ui/lib/molecules/InputWithLabel/InputWithLabel";
+import { TodoListContext } from "../shared/context/TodoListContext";
+// import TodoListContextProvider from "../shared/context/TodoListContextProvider";
 
 export interface ITodo {
-  id: string;
+  _id: string;
   text: string;
   isDone: boolean;
 }
-
 export interface TodoProps extends ITodo {}
-
-// const deleteTodo = async (id: string) => {
-//   console.log(id);
-//   try {
-//     await axios
-//       .delete(`/todos/${id}`)
-//       .then((json) => console.log(json.data))
-//       .then((response) => console.log(response));
-//   } catch (error) {
-//     // .catch((err) => {
-//     console.log(error);
-//     // });
-//   }
-// };
 
 const showTodo = (id: string) => {
   getTodo(id);
@@ -39,11 +24,12 @@ const updateTodo = (id: string, isDone: boolean) => {
 };
 
 export const Todo = (props: TodoProps) => {
-  const { id, text, isDone } = props;
+  const { _id, text, isDone } = props;
   const [checked, setChecked] = useState(false);
-
+  const todoContext = useContext(TodoListContext);
   return (
     <>
+      {/* <TodoListContextProvider> */}
       <div className="flex items-center ">
         <InputWithLabel
           input={{
@@ -57,6 +43,7 @@ export const Todo = (props: TodoProps) => {
             onChange: () => {
               setChecked(!checked);
             },
+            onClick: () => updateTodo(_id, isDone),
           }}
           label={{
             forName: "checkInput",
@@ -69,37 +56,29 @@ export const Todo = (props: TodoProps) => {
         />
       </div>
 
-      <div className="flex items-center">
+      <div className="flex items-center gap-x-6">
         <Tag
           variant={isDone ? "success" : "waiting"}
           label={isDone ? "done" : "waiting"}
         />
 
-        <Button
-          variant="text"
-          onClick={() => updateTodo(id, isDone)}
-          title={""}
-          className="text-md"
-        >
-          <MdOutlineEditNote className="text-md text-slate-700  " />
-        </Button>
-
-        <Button variant="text" title={""} className="text-md">
+        {/* <Button variant="text" title={""} className="text-md">
           <a
-            href={`http://localhost:4200/todos/${id}`}
-            onClick={() => showTodo(id)}
+            href={`http://localhost:4200/todos/${_id}`}
+            onClick={() => showTodo(_id)}
           >
             <AiOutlineEye className="text-md text-slate-700  " />
           </a>
-        </Button>
+        </Button> */}
 
-        {/* <Button
+        <Button
           variant="secondary"
-          onClick={() => deleteTodo(id)}
+          onClick={() => deleteTodo(_id)}
           title={"Delete"}
           className="!p-2 text-xs"
-        /> */}
+        />
       </div>
+      {/* </TodoListContextProvider> */}
     </>
   );
 };
