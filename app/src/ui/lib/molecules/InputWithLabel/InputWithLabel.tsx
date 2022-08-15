@@ -6,12 +6,13 @@ import { Label, LabelProps } from "../../atoms/Label/Label";
 export interface InputWithLabelProps {
   input: InputProps;
   label: LabelProps;
+  formControlClassName?: string;
 }
 
 export const InputWithLabel = (props: InputWithLabelProps) => {
-  const { input, label } = props;
+  const { input, label, formControlClassName } = props;
   return (
-    <FormControl className="gap-2">
+    <FormControl className={formControlClassName}>
       <Label {...label} />
       <Input {...input} />
     </FormControl>

@@ -8,8 +8,8 @@ export interface TagProps {
 export const Tag = (props: TagProps) => {
   const { label, variant } = props;
 
-  const SUCCESS_TAG = "bg-teal-300 text-teal-800";
-  const WAITING_TAG = "bg-red-300 text-red-800";
+  const SUCCESS_TAG = "bg-teal-100 text-teal-800 shadow-teal-500/10";
+  const WAITING_TAG = "bg-red-100 text-red-800 shadow-red-500/10";
 
   const getTagVariant = (variant: string) => {
     if (variant === "success") {
@@ -22,7 +22,9 @@ export const Tag = (props: TagProps) => {
   };
   return (
     <span
-      className={`py-1 px-2 text-xs rounded-full ${getTagVariant(variant)}`}
+      className={`shadow-lg py-1 px-3 text-xs rounded-full ${getTagVariant(
+        variant
+      )}`}
     >
       {label}
     </span>

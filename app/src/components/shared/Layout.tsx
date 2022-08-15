@@ -1,6 +1,8 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { DonutChartComponent } from "../DonutChart/DonutChart";
+import { TodoListContext } from "./context/TodoListContext";
 import { Container } from "./Container/Container";
+import { Header } from "./Header/Header";
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -8,34 +10,20 @@ export interface LayoutProps {
 
 export const Layout = (props: LayoutProps) => {
   const { children } = props;
-  const activeClass = "text-cyan-700 font-semibold";
   return (
     <>
-      <header className="w-full py-6 px-3 flex  gap-6 text-cyan-600">
-        <span>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? activeClass : undefined)}
-          >
-            Home
-          </NavLink>
-        </span>
-        <span>
-          <NavLink
-            to="/todos"
-            className={({ isActive }) => (isActive ? activeClass : undefined)}
-          >
-            TodoList
-          </NavLink>
-        </span>
-      </header>
-      <main>
-        <Container>{children}</Container>
-      </main>
-
-      <footer>
-        <Container>footer</Container>
-      </footer>
+      {/* <TodoListContext.Provider> */}
+        <div className="flex overflow-hidden ">
+          <Header />
+          <main className="w-[60%] h-screen py-10 rounded-l-md  ">
+            <Container>{children}</Container>
+          </main>
+          <div className="w-[40%] max-w-sm">
+            {" "}
+            <DonutChartComponent />{" "}
+          </div>
+        </div>
+      {/* </TodoListContext.Provider> */}
     </>
   );
 };

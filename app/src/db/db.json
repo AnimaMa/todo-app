@@ -1,0 +1,28 @@
+{
+  "todos": [
+    {
+      "id": "62f55ca2d80f9b7c18353f6c",
+      "text": "swim",
+      "isDone": true,
+      "__v": 0
+    },
+    {
+      "id": "62f564a3d80f9b7c18353f72",
+      "text": "swim",
+      "isDone": true,
+      "__v": 0
+    },
+    {
+      "id": "62f5ecfcd80f9b7c18353f82",
+      "text": "MAcka",
+      "isDone": true,
+      "__v": 0
+    },
+    {
+      "id": "62f5f6d9d80f9b7c18353f8a",
+      "text": "Organize your to-do list by workflow,",
+      "isDone": false,
+      "__v": 0
+    }
+  ]
+}
