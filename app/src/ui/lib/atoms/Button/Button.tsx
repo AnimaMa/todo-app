@@ -19,7 +19,10 @@ const btnVariants = {
 export const Button = (props: ButtonProps) => {
   const { variant, title, className, children, ...restOfProps } = props;
   return (
-    <button {...restOfProps} className={` ${btnVariants[variant]}`}>
+    <button
+      {...restOfProps}
+      className={` ${btnVariants[variant]} ${className}`}
+    >
       {title}
       {children}
     </button>

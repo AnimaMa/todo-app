@@ -11,7 +11,7 @@ export interface INavigationRoute {
 
 export const navigationRoutes: INavigationRoute[] = [
   {
-    label: "Home",
+    label: "Dashboard",
     href: "/",
     icon: <AiOutlineHome />,
   },

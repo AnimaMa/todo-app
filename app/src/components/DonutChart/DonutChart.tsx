@@ -1,4 +1,3 @@
-import { AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
 import DonutChart from "react-donut-chart";
 import { getDoneTodos, getNotDoneTodos } from "../../ui/api/jsonserver";
@@ -15,7 +14,6 @@ export const DonutChartComponent = (props: DonutChartProps) => {
     const fetchDoneTodos = async () => {
       const data = await getDoneTodos();
       setDone(data);
-      console.log(data.length);
     };
 
     fetchDoneTodos().catch(console.error);
@@ -23,7 +21,6 @@ export const DonutChartComponent = (props: DonutChartProps) => {
     const fetchNotDoneTodos = async () => {
       const data = await getNotDoneTodos();
       setNotDone(data);
-      console.log(data.length);
     };
 
     fetchNotDoneTodos().catch(console.error);

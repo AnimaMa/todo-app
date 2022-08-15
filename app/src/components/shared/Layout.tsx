@@ -16,8 +16,9 @@ export const Layout = (props: LayoutProps) => {
         <main className="w-[60%] h-screen py-10">
           <Container>{children}</Container>
         </main>
-        <div className="w-[20%] max-w-sm">
-          <DonutChartComponent />
+        <div className="w-[40%] max-w-sm">
+          {" "}
+          <DonutChartComponent />{" "}
         </div>
       </div>
     </>
