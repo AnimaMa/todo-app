@@ -14,7 +14,7 @@ export const Modal = (props: ModalProps) => {
       <div
         id="defaultModal"
         tabIndex={-1}
-        className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex"
+        className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex bg-black bg-opacity-40"
         aria-modal="true"
         role="dialog"
       >

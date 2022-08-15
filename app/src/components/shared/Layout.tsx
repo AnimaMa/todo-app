@@ -13,7 +13,7 @@ export const Layout = (props: LayoutProps) => {
     <>
       <div className="flex overflow-hidden ">
         <Header />
-        <main className="w-[60%] h-screen py-10">
+        <main className="w-[60%] h-screen py-10 rounded-l-md  ">
           <Container>{children}</Container>
         </main>
         <div className="w-[40%] max-w-sm">

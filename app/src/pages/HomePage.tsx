@@ -1,10 +1,11 @@
 import React from "react";
+import { DashboardSection } from "../components/Dashboard/DashboardSection";
 import { Layout } from "../components/shared/Layout";
 
 function HomePage() {
   return (
     <Layout>
-      <h2>homepage</h2>
+      <DashboardSection />
     </Layout>
   );
 }

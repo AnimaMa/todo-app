@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
-import { FcTodoList } from "react-icons/fc";
+import { BsListCheck } from "react-icons/bs";
 import { MdAddTask } from "react-icons/md";
 
 export interface INavigationRoute {
@@ -18,7 +18,7 @@ export const navigationRoutes: INavigationRoute[] = [
   {
     label: "All Todos",
     href: "/todos",
-    icon: <FcTodoList />,
+    icon: <BsListCheck />,
   },
   {
     label: "Add todo",
