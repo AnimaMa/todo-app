@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { deleteTodo, getTodo, updateTodoState } from "../../ui/api/jsonserver";
 import Button from "../../ui/lib/atoms/Button/Button";
@@ -27,14 +27,18 @@ export const Todo = (props: TodoProps) => {
   const { _id, text, isDone } = props;
   const [checked, setChecked] = useState(false);
   const todoContext = useContext(TodoListContext);
+  console.log(checked);
+
   return (
     <>
       {/* <TodoListContextProvider> */}
       <div className="flex items-center ">
         <InputWithLabel
           input={{
-            className: `!w-4 h-4 !accent-violet-500 !focus:ring-red-500 !outline-none ${
-              isDone ? "shadow-lg shadow-indigo-500/50" : ""
+            className: `!w-4 h-4  !accent-violet-500 !focus:ring-red-500 !outline-none ${
+              checked
+                ? "   !bg-red-400 shadow-lg checked:!bg-blue-600 !accent-violet-500 shadow-indigo-500/50"
+                : "checked:bg-blue-600"
             }`,
             type: "checkbox",
             id: "checkInput",
@@ -43,13 +47,13 @@ export const Todo = (props: TodoProps) => {
             onChange: () => {
               setChecked(!checked);
             },
-            onClick: () => updateTodo(_id, isDone),
+            onClick: () => updateTodo(_id, !isDone),
           }}
           label={{
             forName: "checkInput",
             label: text,
             className: `capitalize ${
-              isDone ? "line-through text-opacity-70" : ""
+              isDone || checked ? "line-through text-opacity-70" : ""
             }`,
           }}
           formControlClassName="!flex-row !flex-row-reverse gap-x-3 gap-y-6 items-center"
