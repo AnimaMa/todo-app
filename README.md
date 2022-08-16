@@ -1,33 +1,33 @@
-# Todo App
+## Todo app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-And [Storybook](https://storybook.js.org/).
+#### Example:
 
-## Available Scripts
+TweetWorld
 
-In the project directory, you can run:
+An application for manage your todo list.
 
-### `npm start`
+#### Example:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project is currently in development. Users can get all todos, or create todo, set a todo completed.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation and Setup Instructions
 
-### `npm test`
+#### Installation:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open 'app' folder in terminal.
+`cd app`
 
-### `npm run build`
+Installation:
+`yarn`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To Start Server:
+`yarn run start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To Visit App:
+`localhost:3000`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To start storybook:
+`yarn run storybook`
 
-### `npm run storybook`
+To Visit Storybook:
+`localhost:6006`
