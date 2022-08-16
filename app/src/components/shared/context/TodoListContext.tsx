@@ -5,6 +5,9 @@ interface TodoListContextProps {
   todos: ITodo[];
   isLoading: boolean;
   isError: boolean;
+  doneTodos: ITodo[];
+  showModal: boolean;
+  updateModalState: (showModal: boolean) => void;
 }
 
 export const TodoListContext =

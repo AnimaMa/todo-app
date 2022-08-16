@@ -6,6 +6,8 @@ import { nanoid } from "nanoid";
 import { createTodo } from "../../ui/api/jsonserver";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { MdOutlineError } from "react-icons/md";
+import Alert from "../../ui/lib/atoms/Alert/Alert";
+import { Spinner } from "../../ui/lib/atoms/Spinner/Spinner";
 
 export const AddTodo = () => {
   const [task, setTask] = useState<string>("");
@@ -42,13 +44,13 @@ export const AddTodo = () => {
   };
 
   return (
-    <section className="section--todo-add flex justify-center items-center flex-col">
-      {loading && <p>LOADING</p>}
+    <section className="section--todo-add flex justify-center items-center flex-col gap-y-4">
+      {loading && <Spinner fillColor="fill-green-400" />}
       {error && (
-        <p className="text-red-600">
+        <Alert variant="error">
           <MdOutlineError />
           something went wrong
-        </p>
+        </Alert>
       )}
       <form
         method=""
@@ -79,14 +81,15 @@ export const AddTodo = () => {
           />
         </div>
       </form>
-      {created && (
-        <p>
-          <AiFillCheckCircle className="fill-green-300 text-3xl mr-3 inline-block my-8" />
-          <span>Task has been created</span>
-        </p>
-      )}
+      <div className="flex">
+        {created && (
+          <Alert variant="success">
+            <AiFillCheckCircle className="fill-green-300 text-3xl mr-3 inline-block " />
+            <span>Task has been created</span>
+          </Alert>
+        )}
+      </div>
 
-      {/* TODO: check if error works  */}
       {error && (
         <p>
           <MdOutlineError className="fill-red-600 text-3xl mr-3 inline-block my-8" />

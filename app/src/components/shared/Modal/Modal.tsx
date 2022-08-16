@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { AddTodo } from "../../Todo/AddTodo";
 import { MdClose } from "react-icons/md";
 import Button from "../../../ui/lib/atoms/Button/Button";
+import { TodoListContext } from "../context/TodoListContext";
 export interface ModalProps {
   className?: string;
 }
 
 export const Modal = (props: ModalProps) => {
   const { className } = props;
+  const todoContext = useContext(TodoListContext);
   return (
     <section className={className}>
       {/* <!-- Main modal --> */}
       <div
         id="defaultModal"
         tabIndex={-1}
-        className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex bg-black bg-opacity-40"
+        className={`${
+          todoContext?.showModal ? "block" : "hidden"
+        } overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex bg-black bg-opacity-40`}
         aria-modal="true"
         role="dialog"
       >
@@ -26,9 +30,12 @@ export const Modal = (props: ModalProps) => {
               <h3 className="text-xl font-semibold text-slate-800">
                 Add a task
               </h3>
-              <Button variant="text" title="">
-                {/* add func to close */}
-                <MdClose className="text-slate-500" />
+              <Button
+                variant="text"
+                title=""
+                onClick={() => todoContext?.updateModalState(false)}
+              >
+                <MdClose className="text-slate-500 text-2xl" />
               </Button>
             </div>
             {/* <!-- Modal body --> */}
