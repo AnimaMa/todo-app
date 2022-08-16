@@ -28,14 +28,14 @@ export const DashboardCard = (props: DashboardCardProps) => {
             <DashboardTaskOverview
               title={"Waiting tasks"}
               icon={<BsClockHistory />}
-              count={todoContext?.doneCountTodos}
+              count={todoContext?.notDoneCountTodos}
               bgColor="bg-red-200"
             />
 
             <DashboardTaskOverview
               title={"Done tasks"}
               icon={<BsCheckAll />}
-              count={todoContext?.notDoneCountTodos}
+              count={todoContext?.doneCountTodos}
               bgColor="bg-teal-400"
             />
           </>

@@ -42,24 +42,24 @@ export default function TodoListContextProvider(
     };
   }, []);
 
-  const getDone = async (retrievedData: ITodo[]) => {
-    if (retrievedData && !loading) {
-      try {
-        const filtered: any = retrievedData.filter(
-          (todo) => todo.isDone === true
-        );
-
-        setDoneTodos([...doneTodos, filtered]);
-        const doneTodosCount = filtered.length;
-        setDoneCount(doneTodosCount);
-        const notDone = allTodos.length - doneTodosCount;
-        setNotDoneCount(notDone);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
   useEffect(() => {
+    const getDone = async (retrievedData: ITodo[]) => {
+      if (retrievedData && !loading) {
+        try {
+          const filtered: any = retrievedData.filter(
+            (todo) => todo.isDone === true
+          );
+
+          setDoneTodos([...doneTodos, filtered]);
+          const doneTodosCount = filtered.length;
+          setDoneCount(doneTodosCount);
+          const notDone = allTodos.length - doneTodosCount;
+          setNotDoneCount(notDone);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
     getDone(allTodos);
   }, [loading]);
 
