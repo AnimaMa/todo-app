@@ -25,15 +25,12 @@ export const TodoList = (props: TodoListProps) => {
   };
 
   const todoContext = useContext(TodoListContext);
-
   return (
     <section className="py-4 ">
-      {/* <TodoListContextProvider> */}
       <div className="max-w-4xl mx-auto max-h-[85vh] overflow-y-scroll overscroll-contain">
         <h1 className="text-2xl mb-5 text-center">Your TodoList</h1>
         <ul className=" flex justify-center px-4 gap-y-4 flex-col   ">
-          {/* <TodoListContext.Consumer> */}
-          {todos?.map((todo: ITodo, index: number) => (
+          {todoContext?.todos?.map((todo: ITodo, index: number) => (
             <li
               key={index}
               className=" flex justify-between transition-all duration-500"
@@ -45,10 +42,8 @@ export const TodoList = (props: TodoListProps) => {
           {!todos?.length && (
             <p className="text-orange-600 text-lg text-center">No data found</p>
           )}
-          {/* </TodoListContext.Consumer> */}
         </ul>
       </div>
-      {/* </TodoListContextProvider> */}
     </section>
   );
 };

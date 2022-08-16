@@ -14,7 +14,7 @@ export default function TodoListContextProvider(
     const getData = async () => {
       try {
         const todoList = await getTodoList();
-        setAllTodos([...allTodos, todoList]);
+        setAllTodos(todoList);
         console.log(allTodos);
       } catch (error) {
         console.log(error);
