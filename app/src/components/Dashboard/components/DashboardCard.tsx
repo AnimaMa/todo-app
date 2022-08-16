@@ -1,31 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Card } from "../../shared/Card/Card";
 import { DashboardTaskOverview } from "./DashboardTaskOverview";
 import { BsCheckAll, BsClockHistory, BsListTask } from "react-icons/bs";
 import { TodoListContext } from "../../shared/context/TodoListContext";
+import { Spinner } from "../../../ui/lib/atoms/Spinner/Spinner";
 export interface DashboardCardProps {
   className?: string;
 }
 
 export const DashboardCard = (props: DashboardCardProps) => {
   const { className } = props;
-  const [all, setAll] = useState(0);
 
   const todoContext = useContext(TodoListContext);
-  useEffect(() => {
-    if (todoContext?.todos) {
-      const allTask = todoContext?.todos.length - 1;
-      setAll(allTask);
 
-      console.log(todoContext.doneCountTodos);
-      console.log(todoContext.notDoneCountTodos);
-    }
-  });
   return (
     <Card className={`${className}`}>
       <h2 className="font-semibold">Task Overview</h2>
       <div className="my-12 grid grid-cols-3 gap-x-24">
-        {todoContext && (
+        {todoContext?.todos.length ? (
           <>
             <DashboardTaskOverview
               title={"All tasks"}
@@ -47,6 +39,8 @@ export const DashboardCard = (props: DashboardCardProps) => {
               bgColor="bg-teal-400"
             />
           </>
+        ) : (
+          <Spinner fillColor={"fill-violet-400"} />
         )}
       </div>
     </Card>

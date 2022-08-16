@@ -21,7 +21,7 @@ export const DonutChartComponent = (props: DonutChartProps) => {
       const list = await getTodoList();
       setList(list.data.data);
     };
-    getTodos();
+    // getTodos();
     getTodos().catch(console.error);
 
     if (todoContext?.todos.length) {
