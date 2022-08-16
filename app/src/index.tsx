@@ -1,11 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import TodoListPage from "./pages/TodoList";
-import { Todo } from "./components/Todo/Todo";
 import TodoPage from "./pages/TodoPage";
 import AddTodoPage from "./pages/AddTodoPage";
 
