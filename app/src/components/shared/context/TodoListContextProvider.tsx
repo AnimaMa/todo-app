@@ -62,7 +62,7 @@ export default function TodoListContextProvider(
       }
     };
     getDone(allTodos);
-  }, [allTodos.length, loading]);
+  }, [allTodos, allTodos.length, loading, doneTodos]);
 
   return (
     <TodoListContext.Provider

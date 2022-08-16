@@ -1,6 +1,5 @@
 import React from "react";
 import { DonutChartComponent } from "../DonutChart/DonutChart";
-import { TodoListContext } from "./context/TodoListContext";
 import { Container } from "./Container/Container";
 import { Header } from "./Header/Header";
 import TodoListContextProvider from "./context/TodoListContextProvider";
@@ -20,8 +19,9 @@ export const Layout = (props: LayoutProps) => {
             <Container>{children}</Container>
           </main>
           <div className="w-[40%] max-w-sm">
-            {" "}
-            <DonutChartComponent />{" "}
+            <Container className="h-full">
+              <DonutChartComponent />
+            </Container>
           </div>
         </div>
       </TodoListContextProvider>
