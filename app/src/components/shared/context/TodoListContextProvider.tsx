@@ -11,6 +11,7 @@ export default function TodoListContextProvider(
 ) {
   const [allTodos, setAllTodos] = useState<ITodo[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
@@ -18,24 +19,29 @@ export default function TodoListContextProvider(
       try {
         const todoList = await getTodoList();
         setAllTodos(todoList);
-        console.log(allTodos);
-      } catch (error) {
-        console.log(error);
+        setLoading(false);
+      } catch (error: any) {
+        if (error.response) {
+          setLoading(false);
+          setError(true);
+        }
       }
     };
 
     const timer = setTimeout(() => {
       getData();
-      setLoading(false);
     }, 1000);
 
     return () => {
       clearTimeout(timer);
+      setLoading(false);
     };
   }, []);
 
   return (
-    <TodoListContext.Provider value={{ todos: allTodos, isLoading: loading }}>
+    <TodoListContext.Provider
+      value={{ todos: allTodos, isLoading: loading, isError: error }}
+    >
       {props.children}
     </TodoListContext.Provider>
   );
