@@ -6,12 +6,12 @@ import { ITodo } from "../../components/Todo/Todo";
 // POST - /todo/:id/toggle
 // DELETE - /todo/:id
 
-export const jsonServerApi = axios.create({
+export const serverApi = axios.create({
   baseURL: "https://todo.kontentinoservices.dev",
 });
 
 export const getTodoList = async () => {
-  const data = await jsonServerApi({
+  const data = await serverApi({
     method: "GET",
     url: "/todos",
   });
@@ -19,7 +19,7 @@ export const getTodoList = async () => {
 };
 
 export const getDoneTodos = async () => {
-  const data = await jsonServerApi({
+  const data = await serverApi({
     method: "GET",
     url: "/todos",
     params: {
@@ -30,16 +30,16 @@ export const getDoneTodos = async () => {
 };
 
 export const getTodo = async (id: string) => {
-  const todo = await jsonServerApi({
+  const todo = await serverApi({
     url: `/todos?_id=${id}`,
   }).then((json) => console.log(json.data));
   return todo;
 };
 
 export const createTodo = async (todo: ITodo) => {
-  await jsonServerApi({
+  await serverApi({
     method: "POST",
-    url: "/todoss",
+    url: "/todos",
     data: {
       text: todo.text,
     },
@@ -49,7 +49,7 @@ export const createTodo = async (todo: ITodo) => {
 };
 
 export const updateTodoState = async (_id: string, isDone: boolean) => {
-  await jsonServerApi({
+  await serverApi({
     method: "POST",
     url: `/todo/${_id}/toggle`,
     data: {
@@ -59,7 +59,7 @@ export const updateTodoState = async (_id: string, isDone: boolean) => {
 };
 
 export const deleteTodo = async (_id: string) => {
-  const { data } = await jsonServerApi({
+  const { data } = await serverApi({
     method: "DELETE",
     url: `/todo/${_id}`,
     headers: {

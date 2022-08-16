@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { deleteTodo, updateTodoState } from "../../ui/api/jsonserver";
+import { deleteTodo, updateTodoState } from "../../ui/api/serverApi";
 import Button from "../../ui/lib/atoms/Button/Button";
 import { Tag } from "../../ui/lib/atoms/Tag/Tag";
 import { InputWithLabel } from "../../ui/lib/molecules/InputWithLabel/InputWithLabel";

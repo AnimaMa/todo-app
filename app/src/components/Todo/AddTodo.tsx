@@ -3,7 +3,7 @@ import Button from "../../ui/lib/atoms/Button/Button";
 import { InputWithLabel } from "../../ui/lib/molecules/InputWithLabel/InputWithLabel";
 import { TodoProps } from "./Todo";
 import { nanoid } from "nanoid";
-import { createTodo } from "../../ui/api/jsonserver";
+import { createTodo } from "../../ui/api/serverApi";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { MdOutlineError } from "react-icons/md";
 import Alert from "../../ui/lib/atoms/Alert/Alert";
