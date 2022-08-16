@@ -3,6 +3,7 @@ import { ITodo } from "../../Todo/Todo";
 
 interface TodoListContextProps {
   todos: ITodo[];
+  isLoading: boolean;
 }
 
 export const TodoListContext =

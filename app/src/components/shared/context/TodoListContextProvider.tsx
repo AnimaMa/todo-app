@@ -10,7 +10,10 @@ export default function TodoListContextProvider(
   props: TodoListContextProviderProps
 ) {
   const [allTodos, setAllTodos] = useState<ITodo[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
       try {
         const todoList = await getTodoList();
@@ -21,11 +24,18 @@ export default function TodoListContextProvider(
       }
     };
 
-    getData();
+    const timer = setTimeout(() => {
+      getData();
+      setLoading(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
-    <TodoListContext.Provider value={{ todos: allTodos }}>
+    <TodoListContext.Provider value={{ todos: allTodos, isLoading: loading }}>
       {props.children}
     </TodoListContext.Provider>
   );
