@@ -9,7 +9,6 @@ import { TodoListContext } from "../context/TodoListContext";
 export const Header = () => {
   const activeClass = "text-fuchsia-700 font-semibold";
   const todoContext = useContext(TodoListContext);
-  console.log(!todoContext?.showModal);
   return (
     <header className="relative w-40 rounded-r-lg bg-slate-100 bg-opacity-90  px-3 flex flex-col items-center justify-start py-20  gap-6 text-slate-900">
       {navigationRoutes.map((navroute: INavigationRoute, index: number) => (

@@ -18,19 +18,18 @@ export default function TodoListContextProvider(
   const [notDoneCount, setNotDoneCount] = useState(0);
 
   useEffect(() => {
-    setLoading(true);
-
     const getData = async () => {
+      setLoading(true);
       try {
         const todoList = await getTodoList();
         setAllTodos(todoList);
-        setLoading(false);
       } catch (error: any) {
         if (error.response) {
           setLoading(false);
           setError(true);
         }
       }
+      setLoading(false);
     };
 
     const timer = setTimeout(() => {
@@ -43,26 +42,26 @@ export default function TodoListContextProvider(
     };
   }, []);
 
-  useEffect(() => {
-    const getDone = async (retrievedData: ITodo[]) => {
-      if (retrievedData && !loading) {
-        try {
-          const filtered: any = retrievedData.filter(
-            (todo) => todo.isDone === true
-          );
+  const getDone = async (retrievedData: ITodo[]) => {
+    if (retrievedData && !loading) {
+      try {
+        const filtered: any = retrievedData.filter(
+          (todo) => todo.isDone === true
+        );
 
-          setDoneTodos([...doneTodos, filtered]);
-          const doneTodosCount = filtered.length;
-          setDoneCount(doneTodosCount);
-          const notDone = allTodos.length - doneTodosCount;
-          setNotDoneCount(notDone);
-        } catch (error) {
-          console.log(error);
-        }
+        setDoneTodos([...doneTodos, filtered]);
+        const doneTodosCount = filtered.length;
+        setDoneCount(doneTodosCount);
+        const notDone = allTodos.length - doneTodosCount;
+        setNotDoneCount(notDone);
+      } catch (error) {
+        console.log(error);
       }
-    };
+    }
+  };
+  useEffect(() => {
     getDone(allTodos);
-  }, [allTodos, allTodos.length, loading, doneTodos]);
+  }, [loading]);
 
   return (
     <TodoListContext.Provider
