@@ -30,14 +30,15 @@ export const AddTodo = () => {
     setLoading(true);
 
     if (todo) {
-      createTodo(todo).catch((error) => setError(true));
-
-      setCreated(true);
-      todoInput.current.value = "";
-      setTask("");
-      setLoading(false);
+      try {
+        createTodo(todo).then((response) => setCreated(true));
+      } catch (error) {
+        setError(true);
+      }
     }
-    console.log(error);
+    todoInput.current.value = "";
+    setTask("");
+    setLoading(false);
     setCreated(false);
   };
 
@@ -63,7 +64,10 @@ export const AddTodo = () => {
               name: "todo",
               id: "todo",
               innerRef: todoInput,
-              onChange: (e) => setTask(e.target.value),
+              onChange: (e) => {
+                setTask(e.target.value);
+                setCreated(false);
+              },
             }}
             label={{
               forName: "todo",
@@ -87,13 +91,6 @@ export const AddTodo = () => {
           </Alert>
         )}
       </div>
-
-      {error && (
-        <p>
-          <MdOutlineError className="fill-red-600 text-3xl mr-3 inline-block my-8" />
-          Something went wrong
-        </p>
-      )}
     </section>
   );
 };

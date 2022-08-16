@@ -39,17 +39,17 @@ export const getTodo = async (id: string) => {
 export const createTodo = async (todo: ITodo) => {
   await jsonServerApi({
     method: "POST",
-    url: "/todos",
+    url: "/todoss",
     data: {
       text: todo.text,
     },
-  })
-    .then((request) => console.log(request.headers))
-    .catch((error) => console.log(error));
+  }).catch((error) => {
+    return error;
+  });
 };
 
 export const updateTodoState = async (_id: string, isDone: boolean) => {
-   await jsonServerApi({
+  await jsonServerApi({
     method: "POST",
     url: `/todo/${_id}/toggle`,
     data: {
