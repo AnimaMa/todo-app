@@ -14,6 +14,8 @@ export default function TodoListContextProvider(
   const [error, setError] = useState<boolean>(false);
   const [doneTodos, setDoneTodos] = useState<ITodo[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [doneCount, setDoneCount] = useState(0);
+  const [notDoneCount, setNotDoneCount] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -49,12 +51,11 @@ export default function TodoListContextProvider(
             (todo) => todo.isDone === true
           );
 
-          console.log("1ddd", doneTodos);
-          console.log("FF1", filtered);
           setDoneTodos([...doneTodos, filtered]);
-          setDoneTodos(filtered);
-
-          console.log(doneTodos);
+          const doneTodosCount = filtered.length;
+          setDoneCount(doneTodosCount);
+          const notDone = allTodos.length - doneTodosCount;
+          setNotDoneCount(notDone);
         } catch (error) {
           console.log(error);
         }
@@ -72,6 +73,8 @@ export default function TodoListContextProvider(
         doneTodos,
         showModal,
         updateModalState: setShowModal,
+        doneCountTodos: doneCount,
+        notDoneCountTodos: notDoneCount,
       }}
     >
       {props.children}

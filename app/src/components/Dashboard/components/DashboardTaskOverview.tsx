@@ -3,7 +3,7 @@ import React from "react";
 export interface DashboardTaskOverviewProps {
   title: string;
   icon: React.ReactNode;
-  count: string;
+  count: string | number;
   className?: string;
   bgColor: string;
 }

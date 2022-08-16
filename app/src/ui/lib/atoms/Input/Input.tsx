@@ -6,7 +6,7 @@ export interface InputProps
   id: string;
   name: string;
   innerRef?: any;
-  className? : string;
+  className?: string;
 }
 
 export const Input = (props: InputProps) => {
@@ -16,7 +16,7 @@ export const Input = (props: InputProps) => {
       type={type}
       id={id}
       name={name}
-      className={`bg-slate-100 py-3 px-2 rounded-xl w-full outline-blue-400 transition-all duration-500 ease-out ${className}`}
+      className={`bg-slate-100 py-3 px-2 rounded-xl w-full outline-blue-400 transition-all duration-500 ease-out checked:accent-rose-900 ${className}`}
       ref={innerRef}
       {...restOfProps}
     />

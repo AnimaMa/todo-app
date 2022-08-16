@@ -21,7 +21,6 @@ export const AddTodo = () => {
   useEffect(() => {
     if (task) {
       const createId = nanoid(8);
-      setCreated(false);
       setTodo({ _id: createId, text: task, isDone: false });
     }
   }, [task]);
@@ -32,15 +31,16 @@ export const AddTodo = () => {
     console.log(todo);
 
     if (todo) {
-      createTodo(todo);
+      createTodo(todo).catch((error) => setError(true));
+      console.log(error);
+
       setCreated(true);
       todoInput.current.value = "";
       setTask("");
-      console.log(todo);
       setLoading(false);
-    } else {
-      setError(true);
     }
+    console.log(error);
+    setCreated(false);
   };
 
   return (

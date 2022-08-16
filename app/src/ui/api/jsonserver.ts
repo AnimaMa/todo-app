@@ -1,10 +1,6 @@
 import axios from "axios";
 import { ITodo } from "../../components/Todo/Todo";
 
-// https://todo.kontentinoservices.dev/
-// http://localhost:4200
-//delete: https://todo.kontentinoservices.dev/todo/62f63e28d80f9b7c18354106 acceppt ***
-
 // GET - /todos
 // POST - /todos
 // POST - /todo/:id/toggle
@@ -29,16 +25,6 @@ export const getDoneTodos = async () => {
     params: {
       filter: '[["isDone", "=", true]]',
     },
-  });
-  console.log("DATA", data.data.data);
-  return data.data;
-};
-
-export const getNotDoneTodos = async () => {
-  const { data } = await jsonServerApi({
-    method: "GET",
-    url: "/todos",
-    params: "isDone=false",
   });
   return data.data;
 };
@@ -84,27 +70,3 @@ export const deleteTodo = async (_id: string) => {
 
   return data;
 };
-// export const updateTodo = async (id: string) => {
-//   await jsonServerApi({
-//     method: "PATCH",
-//     url: `/todos/${id}`,
-//     data: {
-//       isDone: true,
-//       text: "4443 id je ",
-//     },
-//   })
-//     .then((response) => console.log(response))
-//     .catch((error) => console.log(error));
-// };
-
-// export const updateTodo = async (todo: ITodo, id: string) => {
-//   initMongo();
-
-//   await jsonServerApi({
-//     method: "PATCH",
-//     url: `/todos?_id=${id}`,
-//     data: { isDone: true, _id: id },
-//   })
-//     .then((response) => console.log(response))
-//     .catch((error) => console.log(error));
-// };

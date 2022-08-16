@@ -36,7 +36,7 @@ export const Todo = (props: TodoProps) => {
         <InputWithLabel
           input={{
             className: `!w-4 h-4  !accent-violet-500 !focus:ring-red-500 !outline-none ${
-              checked
+              checked || isDone
                 ? "   !bg-red-400 shadow-lg checked:!bg-blue-600 !accent-violet-500 shadow-indigo-500/50"
                 : "checked:bg-blue-600"
             }`,

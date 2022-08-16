@@ -8,6 +8,8 @@ interface TodoListContextProps {
   doneTodos: ITodo[];
   showModal: boolean;
   updateModalState: (showModal: boolean) => void;
+  doneCountTodos: number;
+  notDoneCountTodos: number;
 }
 
 export const TodoListContext =
