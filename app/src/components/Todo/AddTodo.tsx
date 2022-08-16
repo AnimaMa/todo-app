@@ -28,11 +28,9 @@ export const AddTodo = () => {
   const handleClick = (e: any) => {
     e.preventDefault();
     setLoading(true);
-    console.log(todo);
 
     if (todo) {
       createTodo(todo).catch((error) => setError(true));
-      console.log(error);
 
       setCreated(true);
       todoInput.current.value = "";

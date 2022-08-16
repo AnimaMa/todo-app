@@ -1,17 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ITodo, Todo, TodoProps } from "../Todo/Todo";
-import { getTodoList } from "../../ui/api/jsonserver";
-import TodoListContextProvider from "../shared/context/TodoListContextProvider";
+import React, { useContext } from "react";
+import { ITodo, Todo } from "../Todo/Todo";
 import { TodoListContext } from "../shared/context/TodoListContext";
 import { Spinner } from "../../ui/lib/atoms/Spinner/Spinner";
 import Alert from "../../ui/lib/atoms/Alert/Alert";
-// import TodoListProvider, { TodoListContext } from "./TodoListContext";
 
-export interface TodoListProps {}
-
-export const TodoList = (props: TodoListProps) => {
-  const {} = props;
-
+export const TodoList = () => {
   const todoContext = useContext(TodoListContext);
 
   return (

@@ -1,12 +1,8 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { AiOutlineEye } from "react-icons/ai";
-import { deleteTodo, getTodo, updateTodoState } from "../../ui/api/jsonserver";
+import React, { useState } from "react";
+import { deleteTodo, updateTodoState } from "../../ui/api/jsonserver";
 import Button from "../../ui/lib/atoms/Button/Button";
 import { Tag } from "../../ui/lib/atoms/Tag/Tag";
 import { InputWithLabel } from "../../ui/lib/molecules/InputWithLabel/InputWithLabel";
-import { TodoListContext } from "../shared/context/TodoListContext";
-// import TodoListContextProvider from "../shared/context/TodoListContextProvider";
 
 export interface ITodo {
   _id: string;
@@ -15,9 +11,9 @@ export interface ITodo {
 }
 export interface TodoProps extends ITodo {}
 
-const showTodo = (id: string) => {
-  getTodo(id);
-};
+// const showTodo = (id: string) => {
+//   getTodo(id);
+// };
 
 const updateTodo = (id: string, isDone: boolean) => {
   updateTodoState(id, isDone);
@@ -26,12 +22,9 @@ const updateTodo = (id: string, isDone: boolean) => {
 export const Todo = (props: TodoProps) => {
   const { _id, text, isDone } = props;
   const [checked, setChecked] = useState(false);
-  const todoContext = useContext(TodoListContext);
-  console.log(checked);
 
   return (
     <>
-      {/* <TodoListContextProvider> */}
       <div className="flex items-center ">
         <InputWithLabel
           input={{
@@ -82,7 +75,6 @@ export const Todo = (props: TodoProps) => {
           className="!p-2 text-xs"
         />
       </div>
-      {/* </TodoListContextProvider> */}
     </>
   );
 };

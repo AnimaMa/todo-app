@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { INavigationRoute, navigationRoutes } from "../../../routes";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -6,10 +6,7 @@ import { Modal } from "../Modal/Modal";
 import Button from "../../../ui/lib/atoms/Button/Button";
 import { TodoListContext } from "../context/TodoListContext";
 
-export interface IHeader {}
-export interface HeaderProps extends IHeader {}
-export const Header = (props: HeaderProps) => {
-  const {} = props;
+export const Header = () => {
   const activeClass = "text-fuchsia-700 font-semibold";
   const todoContext = useContext(TodoListContext);
   console.log(!todoContext?.showModal);

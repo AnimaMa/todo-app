@@ -49,8 +49,7 @@ export const createTodo = async (todo: ITodo) => {
 };
 
 export const updateTodoState = async (_id: string, isDone: boolean) => {
-  console.log(_id);
-  await jsonServerApi({
+   await jsonServerApi({
     method: "POST",
     url: `/todo/${_id}/toggle`,
     data: {

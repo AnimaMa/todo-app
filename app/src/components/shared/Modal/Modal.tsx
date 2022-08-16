@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AddTodo } from "../../Todo/AddTodo";
 import { MdClose } from "react-icons/md";
 import Button from "../../../ui/lib/atoms/Button/Button";
