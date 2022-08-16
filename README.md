@@ -1,13 +1,6 @@
 ## Todo app
 
-#### Example:
-
-TweetWorld
-
 An application for manage your todo list.
-
-#### Example:
-
 This project is currently in development. Users can get all todos, or create todo, set a todo completed.
 
 ## Installation and Setup Instructions
