@@ -33,7 +33,10 @@ export const Modal = (props: ModalProps) => {
               <Button
                 variant="text"
                 title=""
-                onClick={() => todoContext?.updateModalState(false)}
+                onClick={() => {
+                  todoContext?.updateModalState(false);
+                  window.location.reload(); // TODO: update todolist with better solution
+                }}
               >
                 <MdClose className="text-slate-500 text-2xl" />
               </Button>
