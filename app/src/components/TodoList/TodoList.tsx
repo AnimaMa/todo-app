@@ -19,12 +19,12 @@ export const TodoList = () => {
         )}
         <ul className=" flex justify-center px-4 gap-y-4 flex-col   ">
           {todoContext?.todos?.map((todo: ITodo, index: number) => (
-            <li
+            <Todo
               key={index}
-              className=" flex justify-between transition-all duration-500"
-            >
-              <Todo text={todo.text} isDone={todo.isDone} _id={todo._id} />
-            </li>
+              text={todo.text}
+              isDone={todo.isDone}
+              _id={todo._id}
+            />
           ))}
         </ul>
 

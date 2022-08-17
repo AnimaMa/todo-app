@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { deleteTodo, updateTodoState } from "../../ui/api/serverApi";
 import Button from "../../ui/lib/atoms/Button/Button";
 import { Tag } from "../../ui/lib/atoms/Tag/Tag";
@@ -22,31 +22,55 @@ const updateTodo = (id: string, isDone: boolean) => {
 export const Todo = (props: TodoProps) => {
   const { _id, text, isDone } = props;
   const [checked, setChecked] = useState(false);
+  const [isTodoDone, setIsTodoDone] = useState(isDone);
+  const [removeFromList, setRemoveFromList] = useState(false);
 
+  const deleteThisTodo = (id: string) => {
+    setRemoveFromList(true);
+    deleteTodo(_id);
+  };
+  const handleChange = (targetChecked: boolean) => {
+    console.log(checked, isDone);
+    setChecked(targetChecked);
+    console.log(checked, targetChecked);
+    setIsTodoDone(checked);
+    if (isDone && checked) {
+      setChecked(targetChecked);
+      updateTodo(_id, targetChecked);
+    }
+    if (checked) {
+      updateTodo(_id, isDone);
+    } else {
+      updateTodo(_id, !isDone);
+    }
+  };
   return (
-    <>
-      <div className="flex items-center ">
+    <li
+      className={`  flex justify-between transition-all duration-500 ${
+        removeFromList ? "hidden" : "flex "
+      }`}
+    >
+      <div className="flex items-center">
         <InputWithLabel
           input={{
             className: `!w-4 h-4  !accent-violet-500 !focus:ring-red-500 !outline-none ${
-              checked || isDone
-                ? "   !bg-red-400 shadow-lg checked:!bg-blue-600 !accent-violet-500 shadow-indigo-500/50"
+              checked
+                ? " shadow-lg checked:!bg-blue-600 !accent-violet-500 shadow-indigo-500/50"
                 : "checked:bg-blue-600"
             }`,
             type: "checkbox",
             id: "checkInput",
             name: "checkInput",
-            checked: isDone,
-            onChange: () => {
-              setChecked(!checked);
+            checked: checked || isTodoDone,
+            onChange: (e) => {
+              handleChange(e.target.checked);
             },
-            onClick: () => updateTodo(_id, !isDone),
           }}
           label={{
             forName: "checkInput",
             label: text,
             className: `capitalize ${
-              isDone || checked ? "line-through text-opacity-70" : ""
+              checked || isTodoDone ? "line-through text-opacity-70" : ""
             }`,
           }}
           formControlClassName="!flex-row !flex-row-reverse gap-x-3 gap-y-6 items-center"
@@ -70,11 +94,11 @@ export const Todo = (props: TodoProps) => {
 
         <Button
           variant="secondary"
-          onClick={() => deleteTodo(_id)}
+          onClick={() => deleteThisTodo(_id)}
           title={"Delete"}
           className="!p-2 text-xs"
         />
       </div>
-    </>
+    </li>
   );
 };
