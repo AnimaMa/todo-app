@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { AiOutlineEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { deleteTodo, updateTodoState } from "../../ui/api/serverApi";
 import Button from "../../ui/lib/atoms/Button/Button";
 import { Tag } from "../../ui/lib/atoms/Tag/Tag";
@@ -11,10 +13,6 @@ export interface ITodo {
 }
 export interface TodoProps extends ITodo {}
 
-// const showTodo = (id: string) => {
-//   getTodo(id);
-// };
-
 const updateTodo = (id: string, isDone: boolean) => {
   updateTodoState(id, isDone);
 };
@@ -26,24 +24,33 @@ export const Todo = (props: TodoProps) => {
   const [removeFromList, setRemoveFromList] = useState(false);
 
   const deleteThisTodo = (id: string) => {
-    setRemoveFromList(true);
-    deleteTodo(_id);
+    try {
+      deleteTodo(_id);
+      setRemoveFromList(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    setIsTodoDone(isDone);
+    setChecked(isDone);
+  }, [isDone]);
+
   const handleChange = (targetChecked: boolean) => {
-    console.log(checked, isDone);
-    setChecked(targetChecked);
-    console.log(checked, targetChecked);
-    setIsTodoDone(checked);
-    if (isDone && checked) {
-      setChecked(targetChecked);
-      updateTodo(_id, targetChecked);
-    }
     if (checked) {
-      updateTodo(_id, isDone);
-    } else {
+      setChecked(targetChecked);
       updateTodo(_id, !isDone);
+      setIsTodoDone(false);
+    }
+
+    if (!checked) {
+      setChecked(targetChecked);
+      updateTodo(_id, !isDone);
+      setIsTodoDone(false);
     }
   };
+
   return (
     <li
       className={`  flex justify-between transition-all duration-500 ${
@@ -63,14 +70,15 @@ export const Todo = (props: TodoProps) => {
             name: "checkInput",
             checked: checked || isTodoDone,
             onChange: (e) => {
+              console.log("Target is ", e.target.checked);
               handleChange(e.target.checked);
             },
           }}
           label={{
             forName: "checkInput",
             label: text,
-            className: `capitalize ${
-              checked || isTodoDone ? "line-through text-opacity-70" : ""
+            className: `normal-case ${
+              checked ? "line-through text-opacity-70" : ""
             }`,
           }}
           formControlClassName="!flex-row !flex-row-reverse gap-x-3 gap-y-6 items-center"
@@ -79,18 +87,14 @@ export const Todo = (props: TodoProps) => {
 
       <div className="flex items-center gap-x-6">
         <Tag
-          variant={isDone ? "success" : "waiting"}
-          label={isDone ? "done" : "waiting"}
+          variant={checked ? "success" : "waiting"}
+          label={checked ? "done" : "waiting"}
         />
-
-        {/* <Button variant="text" title={""} className="text-md">
-          <a
-            href={`http://localhost:4200/todos/${_id}`}
-            onClick={() => showTodo(_id)}
-          >
+        <Button variant="text" title={""} className="text-md">
+          <Link to={"/todo"} state={{ text, isDone, from: "todo" }}>
             <AiOutlineEye className="text-md text-slate-700  " />
-          </a>
-        </Button> */}
+          </Link>
+        </Button>
 
         <Button
           variant="secondary"

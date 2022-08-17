@@ -16,9 +16,8 @@ root.render(
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/add-todo" element={<AddTodoPage />} />
-        <Route path="/todos" element={<TodoListPage />}>
-          <Route path=":todoid" element={<TodoPage />} />
-        </Route>
+        <Route path="/todos" element={<TodoListPage />} />
+        <Route path="/todo" element={<TodoPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

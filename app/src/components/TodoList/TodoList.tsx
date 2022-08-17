@@ -17,7 +17,7 @@ export const TodoList = () => {
             <Spinner fillColor="fill-indigo-500" />
           </div>
         )}
-        <ul className=" flex justify-center px-4 gap-y-4 flex-col   ">
+        <ul className=" flex justify-center px-4 gap-y-4 flex-col-reverse   ">
           {todoContext?.todos?.map((todo: ITodo, index: number) => (
             <Todo
               key={index}

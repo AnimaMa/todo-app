@@ -29,13 +29,6 @@ export const getDoneTodos = async () => {
   return data.data;
 };
 
-export const getTodo = async (id: string) => {
-  const todo = await serverApi({
-    url: `/todos?_id=${id}`,
-  }).then((json) => console.log(json.data));
-  return todo;
-};
-
 export const createTodo = async (todo: ITodo) => {
   await serverApi({
     method: "POST",
